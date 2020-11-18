@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>極寒えあいハウス</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div id="container">
+            <div>
+                <iframe
+                    src="https://mackerel.io/embed/public/embed/R9eVZ79Vol1gweCnR6kjIXX6MDrvBDj60bmunlz8tD9ZLqPi3RZ4iz8C1e9DfitR?period=1d"
+                    frameborder="0"
+                    id="graph"
+                ></iframe>
+            </div>
+            <div>
+                <ul id="rangeController">
+                    <li data-period="30m">30min</li>
+                    <li data-period="1h">1h</li>
+                    <li data-period="6h">6h</li>
+                    <li data-period="1d" class="active">1d</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            document.querySelectorAll("#rangeController li").forEach((li) => {
+                li.addEventListener("click", (event) => {
+                    const period = li.getAttribute("data-period");
+                    const graph = document.querySelector("#graph");
+                    const src = graph.src.replace(
+                        /\?period=(.+)$/gm,
+                        `?period=${period}`
+                    );
+                    graph.src = src;
+                    document
+                        .querySelectorAll("#rangeController li")
+                        .forEach((li) => {
+                            li.classList.remove("active");
+                        });
+                    li.classList.add("active");
+                });
+            });
+        </script>
+    </body>
+</html>

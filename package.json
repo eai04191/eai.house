@@ -1,0 +1,12 @@
+{
+  "name": "eai.house",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/eai04191/eai.house.git",
+  "author": "Irie Aoi <eai@mizle.net>",
+  "license": "MIT",
+  "dependencies": {
+    "got": "^11.8.2",
+    "vercel": "^22.0.1"
+  }
+}

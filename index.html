@@ -43,6 +43,28 @@
                     li.classList.add("active");
                 });
             });
+
+            (async () => {
+                const d = await fetch("/api/room").then((r) => r.json());
+                const temperature =
+                    Math.round(d["custom.temperature"].value * 10) / 10 || "??";
+                const humidity =
+                    Math.round(d["custom.humidity"].value * 10) / 10 || "??";
+                const temp_text = `🌡️` + temperature + "℃";
+                const humid_text = `💧` + humidity + "%";
+                const flavour = (() => {
+                    if (temperature == "??") return "";
+                    if (temperature > 30) return "灼熱";
+                    if (20 > temperature) return "極寒";
+                    return "平穏";
+                })();
+                const title = [
+                    temp_text,
+                    humid_text,
+                    `- ${flavour}えあいハウス`,
+                ].join(" ");
+                document.title = title;
+            })();
         </script>
     </body>
 </html>

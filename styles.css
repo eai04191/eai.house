@@ -28,11 +28,11 @@ body,
 #container > div {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    padding: 2rem 0;
 }
 
 #container > div:first-child {
-    margin-top: unset;
+    padding: unset;
 }
 
 #graph {

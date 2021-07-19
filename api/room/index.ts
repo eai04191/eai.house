@@ -18,6 +18,10 @@ const validResponse = (d: any): d is Response => {
 };
 
 const index = async (request: VercelRequest, response: VercelResponse) => {
+
+    const twitchFlag = !!Object.keys(request.query).find(
+        (key) => key === "twitch"
+    );
     const hostId = "399ZzPd48Tw";
     const names = ["custom.temperature", "custom.humidity"];
     const searchParams = new URLSearchParams(
@@ -37,6 +41,13 @@ const index = async (request: VercelRequest, response: VercelResponse) => {
     }
 
     const data = json.tsdbLatest[hostId];
+
+    if (twitchFlag) {
+        const tempRaw = data["custom.temperature"].value;
+        const temp = Math.round(tempRaw * 10) / 10 || "??";
+        response.send(`${temp}`);
+        return;
+    }
 
     response.status(200).json(data);
 };

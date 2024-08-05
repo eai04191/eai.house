@@ -6,7 +6,7 @@
   "author": "Irie Aoi <eai@mizle.net>",
   "license": "MIT",
   "dependencies": {
-    "got": "^11.8.2",
-    "vercel": "^22.0.1"
+    "got": "^14.4.2",
+    "vercel": "^35.2.3"
   }
 }

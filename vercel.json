@@ -1,0 +1,9 @@
+{
+    "redirects": [
+        {
+            "source": "/",
+            "destination": "https://grafana.eai.house/public-dashboards/7ab5c6304f85400cbbe872afb2f51b30",
+            "permanent": false
+        }
+    ]
+}
